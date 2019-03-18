@@ -169,6 +169,12 @@ class CNRichTextEditor extends Component {
         //       imageHighLightedInex: index
         //   })
     }
+    
+    onBlur = () => {
+               
+        if(this.props.onBlur)
+            this.props.onBlur();
+    }
 
     onFocus = (index) => {
         if(this.props.onFocus){
@@ -433,6 +439,7 @@ class CNRichTextEditor extends Component {
                 onContentChanged={(items) => this.onContentChanged(items, index)} 
                 onConnectToPrevClicked={()=> this.onConnectToPrevClicked(index)}
                 onFocus={()=> this.onFocus(index)}
+                onBlur={() => this.onBlur()}
                 returnKeyType = {this.props.returnKeyType}
                 foreColor={this.props.foreColor}
                 styleList={styles}

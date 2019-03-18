@@ -33,6 +33,7 @@ class CNRichTextEditor extends Component {
         this.upComingStype = null;
         this.focusOnNextUpdate = -1;
         this.selectionOnFocus = null;
+        this.onFocus = this.onFocus.bind(this)
     }
 
     componentDidMount() {
@@ -170,7 +171,9 @@ class CNRichTextEditor extends Component {
     }
 
     onFocus = (index) => {
-        
+        if(this.props.onFocus){
+            this.props.onFocus()
+        }
         if(this.state.focusInputIndex === index) {
             try {
                 this.textInputs[index].avoidSelectionChangeOnFocus();
